@@ -3,7 +3,7 @@ Aprendiendo JavaScript
 
 ## Objetivos
 - [ ] Fundamentos de JavaScript
-    - [ ] Variables
+    - [x] Variables
     - [ ] Estructuras de datos
     - [ ] Conversion de tipo
     - [ ] Igualdades
