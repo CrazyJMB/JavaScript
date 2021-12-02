@@ -39,6 +39,12 @@ Es un MOM (Message Oriented Middleware)
     - 1:n -> 1 cliente (n `connect`, uno a cada servidor), n servidores (cada uno `bind`)
 
 # ZMQ en node
-    - Instalacion: `npm install zeromq@4`
-    - Sintaxis
-        
+- Instalacion: `npm install zeromq@4`
+- Sintaxis
+    `const zmq = require('zeromq')` -> importa biblioteca
+    `let zsock = zmq.socket('tipoSocket')` -> creación socket (existen varios tipos)
+    `zsock.bind("tcp://*:5555")` -> bind en el port 5555
+    `zsock.connect("tcp://10.0.0.1:5555")` -> connect (host 10.0.0.1, port 5555)
+    `zsock.send([..,..])` -> envio
+    `zsock.on("message", callback)` -> recepcion
+    `zsock.on("close", callback)` -> respuesta al cierre de la conexion
