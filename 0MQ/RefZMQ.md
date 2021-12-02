@@ -1,0 +1,35 @@
+# 0MQ
+Es un MOM (Message Oriented Middleware)
+
+## Caracteristicas básicas
+- Eficiente (compromiso fiabilidad/eficiencia)
+    - Persistencia débil (colas en RAM)
+    - Los sockets tienen colas de mensajes asociadas
+        - Colas de mesajes 
+        de entrada -> mantiente mensajes que llegan -> genera evento "message"
+        de salida -> mantiene los mensajes a enviar
+- Define distintos patrones de intercamnio de mensaje
+- Util a varios niveles -> mismo codigo para comunicar hilos en un proceso, procesos en una maquina, maquinas en red IP.
+    - Solo cambia la config de transporte en la URL
+    - Nos centramos en comunicacione entre maquinas sobre TCP
+
+## Mensajes
+- Gestion de buffer transparente
+    - Gestiona el flujo de mensajes entre las colas de los procesos y nivel de transporte
+    - Contenido del mensaje transparente
+- Los mensajes se entregan de forma atomica (todo o nada)
+    - 1 segmento: `send('hola') -> 4 h o l a`
+    - 3 segmentos: `send(['hola', '', 'Ana']) -> 4 h o l a 0 3 A n a`
+
+    - Envio mensaje
+        - `send(['uno', 'dos'])` -> `sock.on("message", (a,b)=>{..})` a vale 'uno', b vale 'dos'
+        - `send(msg)` -> `sock.on("message", (...m)=>{..})` segmentos de msg en el vector m
+
+## Conexiones
+- Gestion de conexion / reconexion entre agentes automatica
+    - Un agente ejecuta bind: el resto ejecuta connect
+        El orden no importa. Todos se van a encontrar en algun momento
+    - Si se ejecuta el bind sobre un puerto en uso, aparece un error de ejecucion.
+- Conexion / Reconexion en el transporte TCP
+    - `bind` - La IP pertenece a una de las interfaces del socket
+    - `connect` - Deve conocer la dir IP del socket que realice bind
