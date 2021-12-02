@@ -31,12 +31,12 @@ Es un MOM (Message Oriented Middleware)
         El orden no importa. Todos se van a encontrar en algun momento
     - Si se ejecuta el bind sobre un puerto en uso, aparece un error de ejecucion.
 - Conexion / Reconexion en el transporte TCP
-    - **bind** - La IP pertenece a una de las interfaces del socket
-    - **connect** - Deve conocer la dir IP del socket que realice bind
-- Cuando un agente termina ejecuta `close` de forma implicita
+    - **_bind_** - La IP pertenece a una de las interfaces del socket
+    - **_connect_** - Deve conocer la dir IP del socket que realice bind
+- Cuando un agente termina ejecuta **_close_** de forma implicita
 - No solo comunica 1:1
-    - n:1 -> n clientes (cada uno **connect**), 1 servidor (**bind**)
-    - 1:n -> 1 cliente (n **connect**, uno a cada servidor), n servidores (cada uno **bind**)
+    - n:1 -> n clientes (cada uno **_connect_**), 1 servidor (**_bind_**)
+    - 1:n -> 1 cliente (n **_connect_**, uno a cada servidor), n servidores (cada uno **_bind_**)
 
 # ZMQ en node
 - Instalacion: `npm install zeromq@4`
@@ -48,3 +48,14 @@ Es un MOM (Message Oriented Middleware)
     - `zsock.send([..,..])` -> envio
     - `zsock.on("message", callback)` -> recepcion
     - `zsock.on("close", callback)` -> respuesta al cierre de la conexion
+
+- Pasos para diseñar una aplicacion distribuida:
+    1. Decidir que combinacion de **_sockets_** necesitas, y en que agentes se ubican.
+    2. Definir el formato de los mensajes a intercambiar
+    3. Define las respuestas de cada agente ante los eventos generados por los distintos sockets
+
+# Distintos tipos de sockets
+    - [Cliente/Servidor: req/rep]("./Cliente.Servidor/RefClienteServidor.md")
+    - [Pipeline: push/pull]("./Pipeline/RefPipeline.md")
+    - [Difusion: pub/sub]("./Difusion/RefDifusion.md")
+    - [Broker (proxy inverso)]("./Broker/RefBroker.md")
