@@ -55,7 +55,7 @@ Es un MOM (Message Oriented Middleware)
     3. Define las respuestas de cada agente ante los eventos generados por los distintos sockets
 
 # Distintos tipos de sockets
-    - [Cliente/Servidor: req/rep]("./Cliente.Servidor/RefClienteServidor.md")
-    - [Pipeline: push/pull]("./Pipeline/RefPipeline.md")
-    - [Difusion: pub/sub]("./Difusion/RefDifusion.md")
-    - [Broker (proxy inverso)]("./Broker/RefBroker.md")
+- [Cliente/Servidor: req/rep]("./Cliente.Servidor/RefClienteServidor.md")
+- [Pipeline: push/pull]("./Pipeline/RefPipeline.md")
+- [Difusion: pub/sub]("./Difusion/RefDifusion.md")
+- [Broker (proxy inverso)]("./Broker/RefBroker.md")
