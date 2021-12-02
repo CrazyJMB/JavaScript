@@ -31,20 +31,20 @@ Es un MOM (Message Oriented Middleware)
         El orden no importa. Todos se van a encontrar en algun momento
     - Si se ejecuta el bind sobre un puerto en uso, aparece un error de ejecucion.
 - Conexion / Reconexion en el transporte TCP
-    - `bind` - La IP pertenece a una de las interfaces del socket
-    - `connect` - Deve conocer la dir IP del socket que realice bind
+    - **bind** - La IP pertenece a una de las interfaces del socket
+    - **connect** - Deve conocer la dir IP del socket que realice bind
 - Cuando un agente termina ejecuta `close` de forma implicita
 - No solo comunica 1:1
-    - n:1 -> n clientes (cada uno `connect`), 1 servidor (`bind`)
-    - 1:n -> 1 cliente (n `connect`, uno a cada servidor), n servidores (cada uno `bind`)
+    - n:1 -> n clientes (cada uno **connect**), 1 servidor (**bind**)
+    - 1:n -> 1 cliente (n **connect**, uno a cada servidor), n servidores (cada uno **bind**)
 
 # ZMQ en node
 - Instalacion: `npm install zeromq@4`
 - Sintaxis
-    `const zmq = require('zeromq')` -> importa biblioteca
-    `let zsock = zmq.socket('tipoSocket')` -> creación socket (existen varios tipos)
-    `zsock.bind("tcp://*:5555")` -> bind en el port 5555
-    `zsock.connect("tcp://10.0.0.1:5555")` -> connect (host 10.0.0.1, port 5555)
-    `zsock.send([..,..])` -> envio
-    `zsock.on("message", callback)` -> recepcion
-    `zsock.on("close", callback)` -> respuesta al cierre de la conexion
+    - `const zmq = require('zeromq')` -> importa biblioteca
+    - `let zsock = zmq.socket('tipoSocket')` -> creación socket (existen varios tipos)
+    - `zsock.bind("tcp://*:5555")` -> bind en el port 5555
+    - `zsock.connect("tcp://10.0.0.1:5555")` -> connect (host 10.0.0.1, port 5555)
+    - `zsock.send([..,..])` -> envio
+    - `zsock.on("message", callback)` -> recepcion
+    - `zsock.on("close", callback)` -> respuesta al cierre de la conexion
