@@ -33,3 +33,12 @@ Es un MOM (Message Oriented Middleware)
 - Conexion / Reconexion en el transporte TCP
     - `bind` - La IP pertenece a una de las interfaces del socket
     - `connect` - Deve conocer la dir IP del socket que realice bind
+- Cuando un agente termina ejecuta `close` de forma implicita
+- No solo comunica 1:1
+    - n:1 -> n clientes (cada uno `connect`), 1 servidor (`bind`)
+    - 1:n -> 1 cliente (n `connect`, uno a cada servidor), n servidores (cada uno `bind`)
+
+# ZMQ en node
+    - Instalacion: `npm install zeromq@4`
+    - Sintaxis
+        
