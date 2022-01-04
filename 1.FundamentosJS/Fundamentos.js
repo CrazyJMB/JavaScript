@@ -8,7 +8,7 @@ let x = 1;
 
 //#region Ejemplo let
 
-if (X === 1) {
+if (x === 1) {
     let x = 2;
     console.log("Dentro del IF: " + x);
     // Valor esperado: 2
